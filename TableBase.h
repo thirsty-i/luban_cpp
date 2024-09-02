@@ -1,5 +1,4 @@
 #pragma once
-#include <vcruntime.h>
 
 namespace luban
 {
