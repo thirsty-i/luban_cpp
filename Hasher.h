@@ -23,7 +23,7 @@ namespace luban
         template <std::size_t... Is>
         std::size_t hashTuple(const std::tuple<Args...>& t, std::index_sequence<Is...>) const {
             std::size_t hashValue = _FNV_offset_basis;
-            ((hashValue = (hashValue ^ std::hash<std::decay_t<Args>>{}(std::get<Args>(t))) * _FNV_prime), ...);
+            ((hashValue = (hashValue ^ std::hash<std::decay_t<std::tuple_element_t<Is, std::tuple<Args...>>>>{}(std::get<Is>(t))) * _FNV_prime), ...);
             return hashValue;
         }
 #else
